@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Menu Mail Miniapp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#F6F5F1;
+        --surface:#FFFFFF;
+        --border:#E3E0D6;
+        --text:#171A1E;
+        --muted:#6E737A;
+        --teal:#0F766E;
+        --teal-bg:#E6F4F1;
+        --amber:#9A5B13;
+        --amber-bg:#FDF0DC;
+        --slate:#24507A;
+        --slate-bg:#E6EEF5;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#0E1012;
+          --surface:#171A1E;
+          --border:#262B31;
+          --text:#F2F3F4;
+          --muted:#9AA3AD;
+          --teal:#2DD4BF;
+          --teal-bg:#12332F;
+          --amber:#F2B45A;
+          --amber-bg:#3A2C14;
+          --slate:#7FB3E0;
+          --slate-bg:#1C2E42;
+        }
+      }
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0}
+      body{
+        font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background:var(--bg);
+        color:var(--text);
+        -webkit-font-smoothing:antialiased;
+        line-height:1.5;
+      }
+      .wrap{max-width:520px;margin:0 auto;padding:40px 20px 48px}
+      @media(min-width:720px){ .wrap{padding:64px 24px} }
+
+      h1{font-size:28px;line-height:1.15;letter-spacing:-.02em;font-weight:800;margin:0 0 24px}
+
+      .list{display:flex;flex-direction:column;gap:10px}
+      .card{
+        display:flex;gap:14px;align-items:center;
+        background:var(--surface);border:1px solid var(--border);border-radius:14px;
+        padding:16px 18px;text-decoration:none;color:inherit;
+        transition:border-color .15s ease;
+        min-height:44px;
+      }
+      .card:hover{border-color:var(--muted)}
+      .card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+      .card:active{opacity:.85}
+
+      .icon{
+        flex:0 0 auto;width:42px;height:42px;border-radius:10px;
+        display:grid;place-items:center;
+      }
+      .icon svg{width:21px;height:21px}
+      .icon--teal{background:var(--teal-bg);color:var(--teal)}
+      .icon--amber{background:var(--amber-bg);color:var(--amber)}
+      .icon--slate{background:var(--slate-bg);color:var(--slate)}
+
+      .body{flex:1;min-width:0}
+      .domain{
+        font-family:"JetBrains Mono", ui-monospace, monospace;
+        font-size:16px;font-weight:600;color:var(--text);
+        word-break:break-all;
+      }
+      .arrow{flex:0 0 auto;width:18px;height:18px;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>Pilih inbox</h1>
+
+      <nav class="list" aria-label="Daftar mail miniapp">
+        <a class="card" href="https://mail2telegram.xalxelxal.workers.dev" target="_blank" rel="noopener">
+          <div class="icon icon--teal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <div class="body">
+            <div class="domain">@xelxal.cloud</div>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <a class="card" href="https://xelmail.xalxelxal.workers.dev" target="_blank" rel="noopener">
+          <div class="icon icon--amber" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <div class="body">
+            <div class="domain">@xelxal.com</div>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <a class="card" href="https://xelmail2.xalxelxal.workers.dev" target="_blank" rel="noopener">
+          <div class="icon icon--slate" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <div class="body">
+            <div class="domain">@xalxelxal.com</div>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+    </main>
+  </body>
+</html>
