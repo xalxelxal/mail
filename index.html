@@ -24,6 +24,8 @@
         --slate-bg:#E6EEF5;
         --violet:#6D28D9;
         --violet-bg:#EFE7FB;
+        --rose:#BE123C;
+        --rose-bg:#FDE8EC;
       }
       @media (prefers-color-scheme: dark){
         :root{
@@ -40,6 +42,8 @@
           --slate-bg:#1C2E42;
           --violet:#A78BFA;
           --violet-bg:#2A2140;
+          --rose:#FB7185;
+          --rose-bg:#3D1420;
         }
       }
       *{box-sizing:border-box}
@@ -77,6 +81,7 @@
       .icon--amber{background:var(--amber-bg);color:var(--amber)}
       .icon--slate{background:var(--slate-bg);color:var(--slate)}
       .icon--violet{background:var(--violet-bg);color:var(--violet)}
+      .icon--rose{background:var(--rose-bg);color:var(--rose)}
 
       .body{flex:1;min-width:0}
       .domain{
@@ -128,6 +133,16 @@
           </div>
           <div class="body">
             <div class="domain">XL</div>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <a class="card" href="https://a2e-login.flasiaf4.workers.dev" target="_blank" rel="noopener">
+          <div class="icon icon--rose" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>
+          </div>
+          <div class="body">
+            <div class="domain">A2E</div>
           </div>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
