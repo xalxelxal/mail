@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Kuota XL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#F6F5F1;
+        --surface:#FFFFFF;
+        --border:#E3E0D6;
+        --text:#171A1E;
+        --muted:#6E737A;
+        --teal:#0F766E;
+        --teal-bg:#E6F4F1;
+        --amber:#9A5B13;
+        --amber-bg:#FDF0DC;
+        --rose:#BE123C;
+        --rose-bg:#FDE8EC;
+        --slate:#24507A;
+        --slate-bg:#E6EEF5;
+        --bar-bg:#E8E6DF;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#0E1012;
+          --surface:#171A1E;
+          --border:#262B31;
+          --text:#F2F3F4;
+          --muted:#9AA3AD;
+          --teal:#2DD4BF;
+          --teal-bg:#12332F;
+          --amber:#F2B45A;
+          --amber-bg:#3A2C14;
+          --rose:#FB7185;
+          --rose-bg:#3D1420;
+          --slate:#7FB3E0;
+          --slate-bg:#1C2E42;
+          --bar-bg:#262B31;
+        }
+      }
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0}
+      body{
+        font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background:var(--bg);
+        color:var(--text);
+        -webkit-font-smoothing:antialiased;
+        line-height:1.5;
+      }
+      .wrap{max-width:560px;margin:0 auto;padding:40px 20px 48px}
+      @media(min-width:720px){ .wrap{padding:56px 24px} }
+      h1{font-size:28px;line-height:1.15;letter-spacing:-.02em;font-weight:800;margin:0}
+      .sub{color:var(--muted);font-size:14px;margin:6px 0 24px}
+      .sub code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;color:var(--text)}
+
+      .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+      .sum{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px}
+      .sum .lbl{font-size:12px;color:var(--muted);font-weight:600}
+      .sum .val{font-size:18px;font-weight:800;margin-top:2px}
+      .sum .val.warn{color:var(--rose)}
+      .sum .note{font-size:11px;color:var(--muted);margin-top:2px}
+
+      h2{font-size:17px;font-weight:800;margin:28px 0 12px}
+      .list{display:flex;flex-direction:column;gap:10px}
+
+      .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+      .card .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+      .card .name{font-size:17px;font-weight:700}
+      .card .phone{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;color:var(--muted);margin-top:1px}
+      .badge{flex:0 0 auto;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+      .badge--ok{background:var(--teal-bg);color:var(--teal)}
+      .badge--warn{background:var(--amber-bg);color:var(--amber)}
+      .badge--off{background:var(--rose-bg);color:var(--rose)}
+      .badge--muted{background:var(--slate-bg);color:var(--slate)}
+      .gb{font-size:26px;font-weight:800;margin-top:12px}
+      .gb small{font-size:14px;font-weight:600;color:var(--muted)}
+      .bar{height:8px;border-radius:999px;background:var(--bar-bg);margin-top:8px;overflow:hidden}
+      .bar i{display:block;height:100%;border-radius:999px;background:var(--teal)}
+      .bar i.low{background:var(--rose)}
+      .meta{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:13px;color:var(--muted)}
+      .meta b{color:var(--text);font-weight:700}
+      .meta .stale{font-size:11px}
+
+      .plan{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+      .plan .row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+      .plan .row:last-child{border-bottom:0}
+      .plan .row .d{font-weight:700}
+      .plan .row .a{color:var(--muted);text-align:right}
+      .plan .row .a b{color:var(--text)}
+      .plan .row.done .a{color:var(--muted)}
+      .foot{color:var(--muted);font-size:12px;margin-top:28px;line-height:1.6}
+      .foot a{color:var(--teal)}
+      .back{display:inline-block;margin-top:20px;font-size:14px;color:var(--teal);text-decoration:none;font-weight:700}
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>Kuota XL</h1>
+      <p class="sub">Terakhir diperbarui: <code>25 Nov 2026, 00:13 WITA</code><br>Paket XL Xtra Edukasi 15GB · 7 hari · Rp7.753/paket</p>
+
+      <div class="summary">
+        <div class="sum">
+          <div class="lbl">Saldo zonakuota</div>
+          <div class="val">Rp4.494</div>
+          <div class="note">setelah beli asror</div>
+        </div>
+        <div class="sum">
+          <div class="lbl">Beli minggu ini</div>
+          <div class="val">3 paket</div>
+          <div class="note">Rp23.259</div>
+        </div>
+        <div class="sum">
+          <div class="lbl">Kekurangan</div>
+          <div class="val warn">Rp18.765</div>
+          <div class="note">saldo kurang buat 3 beli</div>
+        </div>
+      </div>
+
+      <h2>Sisa Edukasi</h2>
+      <div class="list">
+        <div class="card">
+          <div class="top">
+            <div>
+              <div class="name">xel</div>
+              <div class="phone">087777133929 · nomor sendiri</div>
+            </div>
+            <span class="badge badge--off">Habis hari ini</span>
+          </div>
+          <div class="gb">4,43 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:30%"></i></div>
+          <div class="meta"><span>exp <b>25-11</b></span><span>jatah —</span></div>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div>
+              <div class="name">rus</div>
+              <div class="phone">087844507626</div>
+            </div>
+            <span class="badge badge--off">Habis hari ini · jatah 0</span>
+          </div>
+          <div class="gb">2,71 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:18%"></i></div>
+          <div class="meta"><span>exp <b>25-11</b></span><span>jatah <b>0</b> · tidak dibeli</span><span class="stale">data 24 Nov 17:04</span></div>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div>
+              <div class="name">ed</div>
+              <div class="phone">087860495123</div>
+            </div>
+            <span class="badge badge--warn">Beli besok</span>
+          </div>
+          <div class="gb">20,30 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:100%"></i></div>
+          <div class="meta"><span>exp <b>26-11</b></span><span>jatah <b>2</b></span></div>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div>
+              <div class="name">kaang</div>
+              <div class="phone">087787587257</div>
+            </div>
+            <span class="badge badge--warn">Beli 27 Nov</span>
+          </div>
+          <div class="gb">5,53 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:37%"></i></div>
+          <div class="meta"><span>exp <b>27-11</b></span><span>jatah <b>1</b></span></div>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div>
+              <div class="name">kareng</div>
+              <div class="phone">081944630962</div>
+            </div>
+            <span class="badge badge--ok">Aman</span>
+          </div>
+          <div class="gb">6,05 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:40%"></i></div>
+          <div class="meta"><span>exp <b>28-11</b></span><span>jatah <b>0</b> · tidak dibeli</span></div>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div>
+              <div class="name">aul</div>
+              <div class="phone">087844507604</div>
+            </div>
+            <span class="badge badge--ok">Aman</span>
+          </div>
+          <div class="gb">7,08 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:47%"></i></div>
+          <div class="meta"><span>exp <b>28-11</b></span><span>jatah <b>2</b></span><span class="stale">data 24 Nov 17:04</span></div>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div>
+              <div class="name">asror</div>
+              <div class="phone">087844507614</div>
+            </div>
+            <span class="badge badge--ok">Aman</span>
+          </div>
+          <div class="gb">14,68 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:98%"></i></div>
+          <div class="meta"><span>exp <b>30-11</b></span><span>jatah <b>3</b></span></div>
+        </div>
+      </div>
+
+      <h2>Rencana minggu ini</h2>
+      <div class="plan">
+        <div class="row done"><span class="d">Sel 25 Nov</span><span class="a">rus habis · jatah 0 · <b>tidak dibeli</b></span></div>
+        <div class="row"><span class="d">Rab 26 Nov</span><span class="a">ed habis · beli 1 paket · <b>Rp7.753</b></span></div>
+        <div class="row"><span class="d">Kam 27 Nov</span><span class="a">kaang habis · beli 1 paket · <b>Rp7.753</b></span></div>
+        <div class="row"><span class="d">Jum 28 Nov</span><span class="a">aul habis · beli 1 paket · <b>Rp7.753</b> · kareng habis · jatah 0</span></div>
+        <div class="row"><span class="d">Total</span><span class="a">3 paket · <b>Rp23.259</b> · saldo Rp4.494 · kurang <b>Rp18.765</b></span></div>
+      </div>
+
+      <p class="foot">Tanggal exp dari bot (UTC, sehari lebih awal dari WITA). Data xel, asror, kareng, kaang, ed dari cek langsung API jam 00:13; aul dan rus dari bot Telegram jam 17:04 kemarin (belum login di bot, jadi tidak ikut cek langsung). Halaman ini diperbarui tiap kali cek edu / edu stat dijalankan.</p>
+
+      <a class="back" href="./">← Kembali ke menu</a>
+    </main>
+  </body>
+</html>
