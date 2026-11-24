@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>All Stat — Kuota XL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#F6F5F1;
+        --surface:#FFFFFF;
+        --border:#E3E0D6;
+        --text:#171A1E;
+        --muted:#6E737A;
+        --teal:#0F766E;
+        --teal-bg:#E6F4F1;
+        --amber:#9A5B13;
+        --amber-bg:#FDF0DC;
+        --rose:#BE123C;
+        --rose-bg:#FDE8EC;
+        --slate:#24507A;
+        --slate-bg:#E6EEF5;
+        --bar-bg:#E8E6DF;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#0E1012;
+          --surface:#171A1E;
+          --border:#262B31;
+          --text:#F2F3F4;
+          --muted:#9AA3AD;
+          --teal:#2DD4BF;
+          --teal-bg:#12332F;
+          --amber:#F2B45A;
+          --amber-bg:#3A2C14;
+          --rose:#FB7185;
+          --rose-bg:#3D1420;
+          --slate:#7FB3E0;
+          --slate-bg:#1C2E42;
+          --bar-bg:#262B31;
+        }
+      }
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0}
+      body{
+        font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background:var(--bg);
+        color:var(--text);
+        -webkit-font-smoothing:antialiased;
+        line-height:1.5;
+      }
+      .wrap{max-width:560px;margin:0 auto;padding:40px 20px 48px}
+      @media(min-width:720px){ .wrap{padding:56px 24px} }
+      h1{font-size:28px;line-height:1.15;letter-spacing:-.02em;font-weight:800;margin:0}
+      .sub{color:var(--muted);font-size:14px;margin:6px 0 24px}
+      .sub code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;color:var(--text)}
+
+      .list{display:flex;flex-direction:column;gap:14px}
+      .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+      .card .name{font-size:17px;font-weight:700}
+      .card .phone{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;color:var(--muted);margin-top:1px}
+      .info{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:13px;color:var(--muted)}
+      .info b{color:var(--text);font-weight:700}
+      .quota{margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+      .quota:first-of-type{margin-top:12px}
+      .quota .qname{font-size:14px;font-weight:700}
+      .quota .qname.expired{color:var(--rose)}
+      .quota .qnum{font-size:13px;color:var(--muted);margin-top:1px}
+      .quota .qnum b{color:var(--text);font-weight:700}
+      .bar{height:8px;border-radius:999px;background:var(--bar-bg);margin-top:6px;overflow:hidden}
+      .bar i{display:block;height:100%;border-radius:999px;background:var(--teal)}
+      .bar i.low{background:var(--rose)}
+      .foot{color:var(--muted);font-size:12px;margin-top:28px;line-height:1.6}
+      .foot a{color:var(--teal)}
+      .back{display:inline-block;margin-top:20px;font-size:14px;color:var(--teal);text-decoration:none;font-weight:700}
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>All Stat</h1>
+      <p class="sub">Terakhir diperbarui: <code>25 Nov 2026, 00:46 WITA</code><br>Semua kuota &amp; pulsa dari cek langsung API · tanggal exp UTC (bot)</p>
+
+      <div class="list">
+        <div class="card">
+          <div class="name">xel</div>
+          <div class="phone">087777133929 · nomor sendiri</div>
+          <div class="info"><span>Pulsa <b>Rp6.990</b></span><span>Aktif s/d <b>29-11-2026</b></span><span>Points <b>124</b> · Tier 0</span></div>
+          <div class="quota">
+            <div class="qname expired">Main Quota</div>
+            <div class="qnum"><b>5,00 GB</b> / 5,00 GB · exp 24-11-2026</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Kuota Bonus WhatsApp</div>
+            <div class="qnum"><b>2,75 GB</b> / 2,75 GB · exp 03-12-2026</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Kuota Utama</div>
+            <div class="qnum"><b>1,00 GB</b> / 1,00 GB · exp 03-12-2026</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Xtra Edukasi</div>
+            <div class="qnum"><b>4,06 GB</b> / 15,00 GB · exp 25-11-2026</div>
+            <div class="bar"><i style="width:27%"></i></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="name">asror</div>
+          <div class="phone">087844507614</div>
+          <div class="info"><span>Pulsa <b>Rp862</b></span><span>Aktif s/d <b>04-12-2026</b></span><span>Points <b>1428</b> · Tier 0</span></div>
+          <div class="quota">
+            <div class="qname">Xtra Edukasi</div>
+            <div class="qnum"><b>14,67 GB</b> / 15,00 GB · exp 30-11-2026</div>
+            <div class="bar"><i style="width:98%"></i></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="name">kareng</div>
+          <div class="phone">081944630962</div>
+          <div class="info"><span>Pulsa <b>Rp1.864</b></span><span>Aktif s/d <b>05-12-2026</b></span><span>Points <b>5587</b> · Tier 1</span></div>
+          <div class="quota">
+            <div class="qname">Kuota Bonus WhatsApp</div>
+            <div class="qnum"><b>2,75 GB</b> / 2,75 GB · exp 07-12-2026</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Kuota Utama</div>
+            <div class="qnum"><b>1,00 GB</b> / 1,00 GB · exp 07-12-2026</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Xtra Edukasi</div>
+            <div class="qnum"><b>5,76 GB</b> / 375,00 GB · exp 28-11-2026</div>
+            <div class="bar"><i style="width:2%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Kuota Loyalty</div>
+            <div class="qnum"><b>0 B</b> / 6,00 GB · exp 05-12-2026</div>
+            <div class="bar"><i class="low" style="width:0%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Main Quota</div>
+            <div class="qnum"><b>100,00 GB</b> / 100,00 GB · exp 08-01-2027</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="name">kaang</div>
+          <div class="phone">087787587257</div>
+          <div class="info"><span>Pulsa <b>Rp0</b></span><span>Aktif s/d <b>01-12-2026</b></span><span>Points <b>1628</b> · Tier 0</span></div>
+          <div class="quota">
+            <div class="qname">Kuota Bonus WhatsApp</div>
+            <div class="qnum"><b>2,75 GB</b> / 2,75 GB · exp 08-12-2026</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Kuota Utama</div>
+            <div class="qnum"><b>1,00 GB</b> / 1,00 GB · exp 08-12-2026</div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Xtra Edukasi</div>
+            <div class="qnum"><b>5,16 GB</b> / 105,00 GB · exp 27-11-2026</div>
+            <div class="bar"><i style="width:5%"></i></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="name">ed</div>
+          <div class="phone">087860495123</div>
+          <div class="info"><span>Pulsa <b>Rp5.183</b></span><span>Aktif s/d <b>05-12-2026</b></span><span>Points <b>1302</b> · Tier 0</span></div>
+          <div class="quota">
+            <div class="qname">24jam Games</div>
+            <div class="qnum"><b>605 MB</b> / 7,00 GB · exp 04-12-2026</div>
+            <div class="bar"><i style="width:8%"></i></div>
+          </div>
+          <div class="quota">
+            <div class="qname">Xtra Edukasi</div>
+            <div class="qnum"><b>20,29 GB</b> / 30,00 GB · exp 26-11-2026</div>
+            <div class="bar"><i style="width:68%"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="foot">Aul dan rus tidak tampil di sini karena belum login di bot. Angka "total" mengikuti laporan bot — untuk Edukasi, totalnya bisa lebih dari 15 GB karena paket menumpuk. Halaman ini diperbarui tiap kali All Stat dijalankan.</p>
+
+      <a class="back" href="./kuota.html">← Kembali ke Kuota XL</a>
+    </main>
+  </body>
+</html>
