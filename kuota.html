@@ -66,7 +66,10 @@
       .sum .val.warn{color:var(--rose)}
       .sum .note{font-size:11px;color:var(--muted);margin-top:2px}
 
-      .allstat-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;font-size:15px;border-radius:14px;padding:14px;margin-bottom:24px}
+      .cek-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--teal);color:#fff;font-weight:700;font-size:15px;border-radius:14px;padding:14px;margin-bottom:10px;border:0;cursor:pointer;font-family:inherit}
+      .cek-btn:disabled{opacity:.6;cursor:default}
+      .cek-btn svg{width:18px;height:18px}
+      .allstat-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--surface);color:var(--teal);text-decoration:none;font-weight:700;font-size:15px;border-radius:14px;padding:14px;margin-bottom:24px;border:1px solid var(--teal)}
       .allstat-btn svg{width:18px;height:18px}
 
       h2{font-size:17px;font-weight:800;margin:28px 0 12px}
@@ -105,7 +108,7 @@
   <body>
     <main class="wrap">
       <h1>Kuota XL</h1>
-      <p class="sub">Terakhir diperbarui: <code>25 Nov 2026, 00:27 WITA</code><br>Paket XL Xtra Edukasi 15GB · 7 hari · Rp7.753/paket</p>
+      <p class="sub">Terakhir diperbarui: <code>25 Nov 2026, 01:00 WITA</code><br>Paket XL Xtra Edukasi 15GB · 7 hari · Rp7.753/paket</p>
 
       <div class="summary">
         <div class="sum">
@@ -125,6 +128,11 @@
         </div>
       </div>
 
+      <button type="button" class="cek-btn" id="cek-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6"/></svg>
+        <span id="cek-label">Cek Sekarang</span>
+      </button>
+
       <a class="allstat-btn" href="./allstat.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
         All Stat
@@ -140,8 +148,8 @@
             </div>
             <span class="badge badge--off">Habis hari ini</span>
           </div>
-          <div class="gb">4,21 GB <small>/ 15 GB</small></div>
-          <div class="bar"><i style="width:28%"></i></div>
+          <div class="gb">4,00 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:27%"></i></div>
           <div class="meta"><span>exp <b>25-11</b></span><span>sisa edu —</span></div>
         </div>
 
@@ -166,7 +174,7 @@
             </div>
             <span class="badge badge--warn">Beli besok</span>
           </div>
-          <div class="gb">20,30 GB <small>/ 15 GB</small></div>
+          <div class="gb">20,28 GB <small>/ 15 GB</small></div>
           <div class="bar"><i style="width:100%"></i></div>
           <div class="meta"><span>exp <b>26-11</b></span><span>sisa edu <b>2</b></span></div>
         </div>
@@ -179,8 +187,8 @@
             </div>
             <span class="badge badge--warn">Beli 27 Nov</span>
           </div>
-          <div class="gb">5,38 GB <small>/ 15 GB</small></div>
-          <div class="bar"><i style="width:36%"></i></div>
+          <div class="gb">5,16 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:34%"></i></div>
           <div class="meta"><span>exp <b>27-11</b></span><span>sisa edu <b>1</b></span></div>
         </div>
 
@@ -192,8 +200,8 @@
             </div>
             <span class="badge badge--ok">Aman</span>
           </div>
-          <div class="gb">5,97 GB <small>/ 15 GB</small></div>
-          <div class="bar"><i style="width:40%"></i></div>
+          <div class="gb">5,69 GB <small>/ 15 GB</small></div>
+          <div class="bar"><i style="width:38%"></i></div>
           <div class="meta"><span>exp <b>28-11</b></span><span>sisa edu <b>0</b> · tidak dibeli</span></div>
         </div>
 
@@ -233,9 +241,48 @@
         <div class="row"><span class="d">Total</span><span class="a">3 paket · <b>Rp23.259</b> · saldo Rp4.494 · kurang <b>Rp18.765</b></span></div>
       </div>
 
-      <p class="foot">Tanggal exp dari bot (UTC, sehari lebih awal dari WITA). Data xel, asror, kareng, kaang, ed dari cek langsung API jam 00:27; aul dan rus dari bot Telegram jam 17:04 kemarin (belum login di bot, jadi tidak ikut cek langsung). Halaman ini diperbarui tiap kali cek edu / edu stat dijalankan.</p>
+      <p class="foot">Tanggal exp dari bot (UTC, sehari lebih awal dari WITA). Data xel, asror, kareng, kaang, ed dari cek langsung API jam 01:00; aul dan rus dari bot Telegram jam 17:04 kemarin (belum login di bot, jadi tidak ikut cek langsung). Halaman ini diperbarui tiap kali cek edu / edu stat dijalankan.</p>
 
       <a class="back" href="./">← Kembali ke menu</a>
     </main>
+    <script>
+    (function(){
+      var WORKER = "https://xl-cek.flasiaf4.workers.dev";
+      var btn = document.getElementById("cek-btn");
+      var label = document.getElementById("cek-label");
+      if (!btn || !label) return;
+      btn.addEventListener("click", async function(){
+        if (btn.disabled) return;
+        btn.disabled = true;
+        label.textContent = "Meminta cek...";
+        try {
+          var r = await fetch(WORKER + "/request", { method: "POST" });
+          if (!r.ok) throw new Error("request failed");
+          var data = await r.json();
+          var requestedAt = data.requested_at || new Date().toISOString();
+          label.textContent = "Mengecek...";
+          var start = Date.now();
+          var timer = setInterval(async function(){
+            try {
+              var s = await fetch(WORKER + "/status");
+              var st = await s.json();
+              if (!st.pending && st.last_check && st.last_check > requestedAt) {
+                clearInterval(timer);
+                label.textContent = "Selesai, memuat ulang...";
+                setTimeout(function(){ location.reload(); }, 30000);
+              } else if (Date.now() - start > 5 * 60 * 1000) {
+                clearInterval(timer);
+                btn.disabled = false;
+                label.textContent = "Gagal, ketuk untuk coba lagi";
+              }
+            } catch (e) {}
+          }, 5000);
+        } catch (e) {
+          btn.disabled = false;
+          label.textContent = "Gagal, ketuk untuk coba lagi";
+        }
+      });
+    })();
+    </script>
   </body>
 </html>
