@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="dark" />
     <link rel="icon" href="data:," />
     <title>Menu Mail Miniapp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,40 +11,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
     <style>
       :root{
-        --bg:#F6F5F1;
-        --surface:#FFFFFF;
-        --border:#E3E0D6;
-        --text:#171A1E;
-        --muted:#6E737A;
-        --teal:#0F766E;
-        --teal-bg:#E6F4F1;
-        --amber:#9A5B13;
-        --amber-bg:#FDF0DC;
-        --slate:#24507A;
-        --slate-bg:#E6EEF5;
-        --violet:#6D28D9;
-        --violet-bg:#EFE7FB;
-        --rose:#BE123C;
-        --rose-bg:#FDE8EC;
-      }
-      @media (prefers-color-scheme: dark){
-        :root{
-          --bg:#0E1012;
-          --surface:#171A1E;
-          --border:#262B31;
-          --text:#F2F3F4;
-          --muted:#9AA3AD;
-          --teal:#2DD4BF;
-          --teal-bg:#12332F;
-          --amber:#F2B45A;
-          --amber-bg:#3A2C14;
-          --slate:#7FB3E0;
-          --slate-bg:#1C2E42;
-          --violet:#A78BFA;
-          --violet-bg:#2A2140;
-          --rose:#FB7185;
-          --rose-bg:#3D1420;
-        }
+        --bg:#050816;
+        --surface:#191F2C;
+        --border:#232D40;
+        --text:#F2F3F4;
+        --muted:#9AA3AD;
+        --teal:#2DD4BF;
+        --teal-bg:#12332F;
+        --amber:#F2B45A;
+        --amber-bg:#3A2C14;
+        --slate:#7FB3E0;
+        --slate-bg:#1C2E42;
+        --violet:#A78BFA;
+        --violet-bg:#2A2140;
+        --rose:#FB7185;
+        --rose-bg:#3D1420;
       }
       *{box-sizing:border-box}
       html,body{margin:0;padding:0}
@@ -55,7 +36,8 @@
         -webkit-font-smoothing:antialiased;
         line-height:1.5;
       }
-      .wrap{max-width:520px;margin:0 auto;padding:40px 20px 48px}
+      #bg-net{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+      .wrap{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:40px 20px 48px}
       @media(min-width:720px){ .wrap{padding:64px 24px} }
 
       h1{font-size:28px;line-height:1.15;letter-spacing:-.02em;font-weight:800;margin:0 0 24px}
@@ -120,6 +102,7 @@
     </style>
   </head>
   <body>
+    <canvas id="bg-net" aria-hidden="true"></canvas>
     <main class="wrap">
       <h1>Pilih inbox</h1>
 
@@ -213,6 +196,55 @@
           btn.setAttribute('aria-expanded', String(!closed));
         });
       });
+
+      // Jaring partikel (plexus) ala panel D33MzVPNs — latar #050816
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var cv = document.getElementById('bg-net');
+        var ctx = cv.getContext('2d');
+        var W, H, pts = [];
+        var LINK = 130, COUNT = 70;
+        function resize() {
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          W = window.innerWidth; H = window.innerHeight;
+          cv.width = W * dpr; cv.height = H * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function init() {
+          pts = [];
+          for (var i = 0; i < COUNT; i++) {
+            pts.push({
+              x: Math.random() * W, y: Math.random() * H,
+              vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+              r: 1 + Math.random() * 1.6
+            });
+          }
+        }
+        function step() {
+          ctx.clearRect(0, 0, W, H);
+          for (var i = 0; i < pts.length; i++) {
+            var p = pts[i];
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > W) p.vx *= -1;
+            if (p.y < 0 || p.y > H) p.vy *= -1;
+            for (var j = i + 1; j < pts.length; j++) {
+              var q = pts[j], dx = p.x - q.x, dy = p.y - q.y;
+              var d = Math.sqrt(dx * dx + dy * dy);
+              if (d < LINK) {
+                var a = (1 - d / LINK) * .35;
+                ctx.strokeStyle = 'rgba(120,160,220,' + a.toFixed(3) + ')';
+                ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+              }
+            }
+            ctx.fillStyle = 'rgba(90,140,220,.8)';
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+          }
+          requestAnimationFrame(step);
+        }
+        resize(); init(); step();
+        window.addEventListener('resize', function () { resize(); init(); });
+      })();
     </script>
   </body>
 </html>
