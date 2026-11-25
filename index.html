@@ -90,74 +90,129 @@
         word-break:break-all;
       }
       .arrow{flex:0 0 auto;width:18px;height:18px;color:var(--muted)}
+
+      /* Grup lipat (akordeon) */
+      .group + .group{margin-top:26px}
+      .group-head{
+        display:flex;align-items:center;gap:8px;
+        width:100%;padding:6px 2px 12px;
+        background:none;border:0;cursor:pointer;
+        font:inherit;color:inherit;text-align:left;
+      }
+      .group-head:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+      .group-title{
+        font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+        color:var(--muted);
+      }
+      .badge{
+        font-size:12px;font-weight:700;line-height:1;
+        background:var(--border);color:var(--muted);
+        border-radius:999px;padding:4px 8px;
+      }
+      .chev{
+        margin-left:auto;flex:0 0 auto;width:18px;height:18px;color:var(--muted);
+        transition:transform .25s ease;
+      }
+      .group-body{display:grid;grid-template-rows:1fr;transition:grid-template-rows .25s ease}
+      .group-body > .list{overflow:hidden;min-height:0}
+      .group.closed .group-body{grid-template-rows:0fr}
+      .group.closed .chev{transform:rotate(-90deg)}
     </style>
   </head>
   <body>
     <main class="wrap">
       <h1>Pilih inbox</h1>
 
-      <nav class="list" aria-label="Daftar mail miniapp">
-        <a class="card" href="https://mail2telegram.xalxelxal.workers.dev" target="_blank" rel="noopener">
-          <div class="icon icon--teal" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
-          </div>
-          <div class="body">
-            <div class="domain">@xelxal.cloud</div>
-          </div>
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+      <section class="group" data-group>
+        <button class="group-head" type="button" aria-expanded="true" aria-controls="g-email">
+          <span class="group-title">Inbox Email</span>
+          <span class="badge">3</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="group-body" id="g-email">
+          <nav class="list" aria-label="Inbox Email">
+            <a class="card" href="https://mail2telegram.xalxelxal.workers.dev" target="_blank" rel="noopener">
+              <div class="icon icon--teal" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+              </div>
+              <div class="body">
+                <div class="domain">@xelxal.cloud</div>
+              </div>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
 
-        <a class="card" href="https://xelmail.xalxelxal.workers.dev" target="_blank" rel="noopener">
-          <div class="icon icon--amber" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
-          </div>
-          <div class="body">
-            <div class="domain">@xelxal.com</div>
-          </div>
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+            <a class="card" href="https://xelmail.xalxelxal.workers.dev" target="_blank" rel="noopener">
+              <div class="icon icon--amber" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+              </div>
+              <div class="body">
+                <div class="domain">@xelxal.com</div>
+              </div>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
 
-        <a class="card" href="https://xelmail2.xalxelxal.workers.dev" target="_blank" rel="noopener">
-          <div class="icon icon--slate" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
-          </div>
-          <div class="body">
-            <div class="domain">@xalxelxal.com</div>
-          </div>
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+            <a class="card" href="https://xelmail2.xalxelxal.workers.dev" target="_blank" rel="noopener">
+              <div class="icon icon--slate" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+              </div>
+              <div class="body">
+                <div class="domain">@xalxelxal.com</div>
+              </div>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </nav>
+        </div>
+      </section>
 
-        <a class="card" href="https://engsel-web.wokku.app/" target="_blank" rel="noopener">
-          <div class="icon icon--violet" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
-          </div>
-          <div class="body">
-            <div class="domain">XL</div>
-          </div>
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+      <section class="group" data-group>
+        <button class="group-head" type="button" aria-expanded="true" aria-controls="g-layanan">
+          <span class="group-title">Layanan</span>
+          <span class="badge">3</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="group-body" id="g-layanan">
+          <nav class="list" aria-label="Layanan">
+            <a class="card" href="https://engsel-web.wokku.app/" target="_blank" rel="noopener">
+              <div class="icon icon--violet" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+              </div>
+              <div class="body">
+                <div class="domain">XL</div>
+              </div>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
 
-        <a class="card" href="https://a2e-login.flasiaf4.workers.dev" target="_blank" rel="noopener">
-          <div class="icon icon--rose" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>
-          </div>
-          <div class="body">
-            <div class="domain">A2E</div>
-          </div>
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+            <a class="card" href="https://a2e-login.flasiaf4.workers.dev" target="_blank" rel="noopener">
+              <div class="icon icon--rose" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>
+              </div>
+              <div class="body">
+                <div class="domain">A2E</div>
+              </div>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
 
-        <a class="card" href="./kuota.html">
-          <div class="icon icon--teal" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-          </div>
-          <div class="body">
-            <div class="domain">Kuota XL</div>
-          </div>
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-
-      </nav>
+            <a class="card" href="./kuota.html">
+              <div class="icon icon--teal" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+              </div>
+              <div class="body">
+                <div class="domain">Kuota XL</div>
+              </div>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </nav>
+        </div>
+      </section>
     </main>
+    <script>
+      document.querySelectorAll('[data-group]').forEach(function (g) {
+        var btn = g.querySelector('.group-head');
+        btn.addEventListener('click', function () {
+          var closed = g.classList.toggle('closed');
+          btn.setAttribute('aria-expanded', String(!closed));
+        });
+      });
+    </script>
   </body>
 </html>
